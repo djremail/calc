@@ -1,0 +1,29 @@
+@media (min-width: 1440px) {
+  .for_page .container {
+      max-width: 1168px;
+  }
+}
+
+@media (max-width: 1399px) {
+
+}
+
+@media (max-width: 1199px) {
+
+}
+
+@media (max-width: 991px) {
+
+}
+
+@media (max-width: 767px) {
+
+}
+
+@media (max-width: 470px) {
+
+}
+
+@media (max-width: 360px) {
+
+}
