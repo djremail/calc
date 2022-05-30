@@ -1,28 +1,57 @@
+jQuery('.form').click(function () {
+	jQuery('.table').hide('slow');
+});
 
+let newYear;
+let startY = +moment().format('YYYY') - 10;
+let endY = +moment().format('YYYY') + 2;
+for (let i = startY; i <= endY; i++) {
+	newYear += '<option value="' + i + '">' + i + '</option>';
+}
 
+$('.select_year').html(newYear);
+// -----------------------------------------------------
 
 let clickBtn = jQuery('#submit');
 clickBtn.click(function () {
 
+	jQuery('.table').show('slow');
+
 	let selectDate = +$('.select_date').val();
 	let selectMonth = +$('.select_month').val();
 	let selectYear = +$('.select_year').val();
+	let selectCountry = +$('.select_city').val();
+	console.log(selectCountry);
 
-	let result = `${selectMonth}  ${selectDate}  ${selectYear}`;
-	let result2 = new Date (result);
-	result2.setDate(result2.getDate() +4);
-	let result3 = new Date (result);
-	result3.setMonth(result3.getMonth() +1);
-	let result4 = new Date (result);
-	result4.setMonth(result4.getMonth() +3);
-	let result5 = new Date (result);
-	result5.setDate(result5.getDate() +135);
-	let result6 = new Date (result);
-	result6.setMonth(result6.getMonth() +6);
-	let result7 = new Date (result);
-	result7.setMonth(result7.getMonth() +12);
-	let result8 = new Date (result);
-	result8.setMonth(result8.getMonth() +18);
+	let result = [selectMonth, selectDate, selectYear];
+	let result2 = new Date(result);
+	let resultPlus = +new Date(result);
+	let today = +new Date();
+	console.log(today);
+
+	if (resultPlus > today) {
+		alert('Зверніть увагу, що це дата із майбутнього!')
+	}
+
+	result2.setDate(result2.getDate() + 4);
+	let result3 = new Date(result);
+	result3.setMonth(result3.getMonth() + 1);
+	let result4 = new Date(result);
+	result4.setMonth(result4.getMonth() + 3);
+	let result5 = new Date(result);
+	result5.setDate(result5.getDate() + 135);
+	let result6 = new Date(result);
+	result6.setMonth(result6.getMonth() + 6);
+	let result7 = new Date(result);
+	result7.setMonth(result7.getMonth() + 12);
+	let result8 = new Date(result);
+	result8.setMonth(result8.getMonth() + 18);
+	let result9 = new Date(result);
+	result9.setDate(result9.getDate() + 45);
+	let result10 = new Date(result);
+	result10.setMonth(result10.getMonth() + 2);
+	let result11 = new Date(result);
+	result11.setMonth(result11.getMonth() + 4);
 
 
 	// ---------Вывод адекватной даты------------
@@ -51,100 +80,92 @@ clickBtn.click(function () {
 	let renegate6 = (getUserTime(new Date(result6)));
 	let renegate7 = (getUserTime(new Date(result7)));
 	let renegate8 = (getUserTime(new Date(result8)));
+	let renegate9 = (getUserTime(new Date(result9)));
+	let renegate10 = (getUserTime(new Date(result10)));
+	let renegate11 = (getUserTime(new Date(result11)));
 	console.log(renegate);
+	let finalData = renegate;
+	$('.text_data').html('Дата народження Вашої дитини' + ' ' + finalData);
 
 
 	// ===============Переменные для ввода в таблицу===========================
-	let row_21 = renegate;
-	$('.row_21').html(row_21);
-	let row_22 = 'У перші 12 годин життя';
-	$('.row_22').html(row_22);
-	let row_23 = 'Перша вакцинація проти вірусного гепатиту B';
-	$('.row_23').html(row_23);
-	// ---------------------------------------------------------------------
-	let row_31 = renegate2;
-	$('.row_31').html(row_31);
-	let row_32 = 'Новонароджені (3-7 днів)';
-	$('.row_32').html(row_32);
-	let row_33 = 'Вакцинація проти туберкульозу';
-	$('.row_33').html(row_33);
-	// ----------------------------------------------------------------------
-	let row_41 = renegate3;
-	$('.row_41').html(row_41);
-	let row_42 = '1 місяць';
-	$('.row_42').html(row_42);
-	let row_43 = 'Друга вакцинація проти вірусного гепатиту B';
-	$('.row_43').html(row_43);
-	// ----------------------------------------------------------------------
-	let row_51 = renegate4;
-	$('.row_51').html(row_51);
-	let row_52 = '3 місяць';
-	$('.row_52').html(row_52);
-	let row_53 = 'Перша вакцинація проти дифтерії, кашлюку, правця, поліомієліту';
-	$('.row_53').html(row_53);
-	// ----------------------------------------------------------------------
-	let row_61 = renegate5;
-	$('.row_61').html(row_61);
-	let row_62 = '4,5 місяця';
-	$('.row_62').html(row_62);
-	let row_63 = 'Друга вакцинація проти дифтерії, кашлюку, правця, поліомієліту';
-	$('.row_63').html(row_63);
-	// ----------------------------------------------------------------------
-	let row_71 = renegate6;
-	$('.row_71').html(row_71);
-	let row_72 = '6 місяців';
-	$('.row_72').html(row_72);
-	let row_73 = 'Третя вакцинація проти дифтерії, кашлюку, правця, поліомієліту. Третя вакцинація проти вірусного гепатиту B';
-	$('.row_73').html(row_73);
-	// ----------------------------------------------------------------------
-	let row_81 = renegate7;
-	$('.row_81').html(row_81);
-	let row_82 = '12 місяців';
-	$('.row_82').html(row_82);
-	let row_83 = 'Вакцинація проти кору, краснухи епідемічного паротиту';
-	$('.row_83').html(row_83);
-	// ----------------------------------------------------------------------
-	let row_91 = renegate8;
-	$('.row_91').html(row_91);
-	let row_92 = '18 місяців';
-	$('.row_92').html(row_92);
-	let row_93 = 'Перша ревакцинація проти дифтерії, кашлюку, правця, поліомієліту';
-	$('.row_93').html(row_93);
+	if (selectCountry === 1) {
+		let row_21 = renegate;
+		$('.row_21').html(row_21);
+		$('.row_22').html('У перші 12 годин життя');
+		$('.row_23').html('Перша вакцинація проти вірусного гепатиту B')
+		// ---------------------------------------------------------------------
+		let row_31 = renegate2;
+		$('.row_31').html(row_31);
+		$('.row_32').html('Новонароджені (3-7 днів)');
+		$('.row_33').html('Вакцинація проти туберкульозу');
+		// ----------------------------------------------------------------------
+		let row_41 = renegate3;
+		$('.row_41').html(row_41);
+		$('.row_42').html('1 місяць');
+		$('.row_43').html('Друга вакцинація проти вірусного гепатиту B');
+		// ----------------------------------------------------------------------
+		let row_51 = renegate4;
+		$('.row_51').html(row_51);
+		$('.row_52').html('3 місяць');
+		$('.row_53').html('Перша вакцинація проти дифтерії, кашлюку, правця, поліомієліту');
+		// ----------------------------------------------------------------------
+		let row_61 = renegate5;
+		$('.row_61').html(row_61);
+		$('.row_62').html('4,5 місяця');
+		$('.row_63').html('Друга вакцинація проти дифтерії, кашлюку, правця,поліомієліту');
+		// ----------------------------------------------------------------------
+		let row_71 = renegate6;
+		$('.row_71').html(row_71);
+		$('.row_72').html('6 місяців');
+		$('.row_73').html('Третя вакцинація проти дифтерії, кашлюку, правця, поліомієліту. Третя вакцинація проти вірусного гепатиту B');
+		// ----------------------------------------------------------------------
+		let row_81 = renegate7;
+		$('.row_81').html(row_81);
+		$('.row_82').html('12 місяців');
+		$('.row_83').html('Вакцинація проти кору, краснухи епідемічного паротиту');
+		// ----------------------------------------------------------------------
+		let row_91 = renegate8;
+		$('.row_91').html(row_91);
+		$('.row_92').html('18 місяців');
+		$('.row_93').html('Перша ревакцинація проти дифтерії, кашлюку, правця, поліомієліту');
+
+	} else if (selectCountry === 2 || selectCountry === 3) {
+		let row_21 = renegate9;
+		$('.row_21').html(row_21);
+		$('.row_22').html('1.5 місяці');
+		$('.row_23').html('Ротавірус')
+		// ----------------------------------------------------------------------
+		let row_31 = renegate10;
+		$('.row_31').html(row_31);
+		$('.row_32').html('2 місяці');
+		$('.row_33').html('Стовпняк+дифтерія, кашлюк, поліомієліт, пневмокок, гепатит B, гемофілія b')
+		// -----------------------------------------------------------------------
+		$('.row_41').html(row_31);
+		$('.row_42').html('2 місяці');
+		$('.row_43').html('Ротавірус')
+		// -----------------------------------------------------------------------
+		let row_51 = renegate4;
+		$('.row_51').html(row_51);
+		$('.row_52').html('3 місяці');
+		$('.row_53').html('Ротавірус (за потреби). Проконсультуватися у лікаря')
+		// -----------------------------------------------------------------------
+		let row_61 = renegate11;
+		$('.row_61').html(row_61);
+		$('.row_62').html('4 місяці');
+		$('.row_63').html('Стовпняк+дифтерія, кашлюк, поліомієліт, пневмокок, гепатит B, гемофілія b')
+		// -----------------------------------------------------------------------
+		$('.row_71').html(row_61);
+		$('.row_72').html('4 місяці');
+		$('.row_73').html('Пневмокок')
+		// -----------------------------------------------------------------------
+		let row_81 = renegate7;
+		$('.row_81').html(row_81);
+		$('.row_82').html('1 рік');
+		$('.row_83').html('Стовпняк+дифтерія, кашлюк, поліомієліт, пневмокок, гепатит B, гемофілія b')
+		// -----------------------------------------------------------------------
+		$('.row_91').html(row_81);
+		$('.row_92').html('1 рік');
+		$('.row_93').html('Паротит, кір, краснуха, вітряна віспа')
+	}
 })
-
-
-
-
-
-
-
-// let button = $('.item_btn');
-// button.click(function () {
-// 	let newPrice = + $('.input_price').val();
-// 	let value = +$('.input_volume').val();
-// 	let resValue = value * 3.6;
-// 	let sity = $('.sity_select').val();
-// 	let newDeclaration = 100;
-// 	let cusroms = 1000;
-// 	let broker = newPrice * 0.1;
-// 	let disposal = newPrice * 0.03;
-// 	let ourCompany = newPrice * 0.15;
-// 	let newCurse = +$('.curse').html();
-
-// 	console.log(resNds);
-
-
-
-
-// 	$('.text_price').html(newPrice);
-// 	$('.text_duty').html(parseFloat(resValue.toFixed(2)))
-// 	$('.text_delivery').html(sity);
-// 	$('.text_decloration').html(newDeclaration);
-// 	$('.text_customs').html(cusroms);
-// 	$('.text_broker').html(broker);
-// 	$('.text_disposal').html(disposal);
-// 	$('.text_our_company').html(ourCompany);
-// 	$('.text_nds').html(parseFloat(-ndsDont.toFixed(2)));
-// 	$('.text_price').val(result); -Если нужно вставить текст в инпут
-
-// })
